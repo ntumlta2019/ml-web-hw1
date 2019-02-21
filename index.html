@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115414898-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-115414898-1');
+  </script>
+</head>
+
+
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<meta name="author" content="ntumlta2019" >
+<meta charset="UTF-8">
+
+
+<title>Machine Learning (2019, Spring) - HW1</title>
+
+<xmp theme="united" style="display:none;">
+
+
+
+# <p class="text-h">Homework 1 - PM2.5 Prediction</p>
+
+### <p class="text-hh">Announcements</p>
+
+
+<!--#### 3/18
+* 請各位修課同學務必注意，github請勿上傳dataset!!!
+
+#### 3/15
+* Strong baseline release!
+* Hands-on session materials：<a href="./sample_code.html" target="_blank">sample code</a> and <a href="https://docs.google.com/presentation/d/1mY9gG-QCJ21NpjOQ--bFnoFQRhs0TlKox8AegWni518/edit?usp=sharing" target="_blank">supplementary slide</a>.
+
+#### 3/11
+
+* 新增hw1_best.sh套件限制：
+  * Scikit-learn == 0.19.0
+
+#### 3/10
+
+* 新增hw1_best.sh套件限制：
+  * Tensorflow == 1.4.0
+  * Pytorch == 0.3.0
+  * Keras == 2.0.8
+  
+#### 3/9
+
+* HW1小老師表單連結已公布! 請注意表單僅統計至3/13 21:59:59(GMT+8)。-->
+
+#### 2/21
+
+* HW1 release!
+* 手把手 release!
+
+
+<!--
+<hr>
+
+
+### <p class="text-hh">Lecture Slides</p>
+* Week1(3/1/2018): Introduction <a href="https://drive.google.com/open?id=1pOFQFyzK9b1kbHnx3-LoZlgQsgBKSVDR">[pdf]</a>
+* Week1(3/1/2018): Regression <a href="https://drive.google.com/open?id=1T66NyD5jEBlLfXx8TI2G-0QN4tlFrMu1">[pdf]</a>
+* Week1(3/1/2018): Bias and Variance <a href="https://drive.google.com/open?id=1fQql6dwCvp4WZ9FkzchHqEWuYcGgFLDQ">[pdf]</a>
+* Week2(3/8/2018): Gradient Descent <a href="https://drive.google.com/open?id=17iGC3qPP2lrCuaCbfbTx0AISZAC-WhhR">[pdf]</a>
+* Week2(3/8/2018): Classification <a href="https://drive.google.com/open?id=1vooNE7ssbO_RxA7LAPoyydk3ZZVcNJbI">[pdf]</a>
+* Week2(3/8/2018): Logisic Regression <a href="https://drive.google.com/open?id=1hfu3JbOn2JejkVLRPFMfShteq5YXyUX_">[pdf]</a>
+-->
+
+
+<hr>
+
+
+### <p class="text-hh">Links</p>
+* 作業投影片 <a href="https://docs.google.com/presentation/d/1gM32ovHHH6Dv4I3Ow0P3XXz1savkBp8jWSqSVp0Xwg4/edit#slide=id.g4cd6560e29_0_10/" target="_blank"><i class="fa fa-book"></i></a>
+* 手把手投影片 <a href="https://docs.google.com/presentation/d/1TkPQoOPyDY9IzzuaVsYq1E26D1NTmi_QA9S9c-rw9K8/edit#slide=id.g5047f99cc6_0_0" target="_blank"><i class="fa fa-book"></i></a>
+* Kaggle 連結 <a href="https://www.kaggle.com/c/ml2019spring-hw1" target="_blank"><i class="fa fa-trophy"></i></a>
+* General Tutorial 投影片 <a href="https://goo.gl/Tvsy1i" target="_blank"><i class="fa fa-book"></i></a>
+* Github Repo 表單 <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_BL_NZJVVL-xzsDXBVQtTShpwih07SbgRmQrYhmzrZHx7yQ/viewform" target="_blank"><i class="fa fa-pencil-square-o"></i></a>
+* Report 模板 <a href="https://docs.google.com/document/d/1n9GeHikNOUeckA6WV-gDASSg_gqzgvoqQMZX0QJv1xc/edit" target="_blank"><i class="fa fa-file-text"></i></a>
+* 遲交表單 <a href="https://docs.google.com/forms/d/1Ui_-NaLggaOtHYtcH4Zymz7ZtOT_n8IeWDP6rv78FHA/viewform?edit_requested=true" target="_blank"><i class="fa fa-pencil-square-o"></i></a>
+* Facebook Group <a href="https://www.facebook.com/groups/314613059175222/" target="_blank"><i class="fa fa-facebook-square"></i></a>
+<!--* 小老師表單 <a href="https://goo.gl/feHp6o" target="_blank"><i class="fa fa-pencil-square-o"></i></a>-->
+
+<hr>
+
+
+### <p class="text-hh">Deadlines</p>
+* Simple Bonus Deadline: 02/28/2019 23:59:59  (GMT+8)
+* Kaggle Deadline: 03/07/2019 11:59:59  (GMT+8)
+* Github Deadline: 03/08/2019 23:59:59  (GMT+8)
+
+<hr>
+
+### <p class="text-hh">Assignment Regulation</p>
+
+* ALL code must be written in python3.6 
+* For `hw1.sh` :
+  * ALL python standard library is permitted (e.g. sys, csv, time)
+  * numpy >= 1.14
+  * scipy == 1.1.0
+  * pandas == 0.23.4
+
+* For `hw1_best.sh` :
+  * ALL toolkit is permitted 
+  * Meet the higher score you choose in kaggle
+<hr>
+
+### <p class="text-hh">FAQ</p>
+  <!--* Tensorflow == 1.4.0
+  * Pytorch == 0.3.0
+  * Keras == 2.0.8
+  * Scikit-learn == 0.19.0-->
+
+
+<p>Q1：請問kaggle的組隊人數上限？</p>
+<p>A1：hw1為個人作業，不用在kaggle上進行組隊。</p>
+<p>Q2: 如果只有實作 gradient descent，hw1.sh跟hw1_best.sh可以繳交同一份script嗎？</p>
+<p>A2: 可以的。</p>
+<p>Q3: 請問report第一題到底要我們比較哪兩個模型？</p>
+<p>A3：簡單來說是比較以下兩種模型：</p>
+<ul>
+  <li>9x18+1=163種feature（9小時內所有18種測量值+bias項）</li>
+  <li>9x1+1=10種feature（9小時內所有PM2.5值+bias項）</li>
+</ul>
+<p>Q4：所以hw1_best.sh可能會用到的套件也要寫信跟助教確認嗎？</p>
+<p>A4：不用！只有hw1.sh中若會使用到numpy, scipy, pandas以外的套件才需要寫信。</p>
+<p>Q5：hw1.sh 可以 impart sys 嗎？</p>
+<p>A5：sys 屬於 python standard library，所以是可以使用的。其他可以使用的內建套間可以參照：<a href="https://docs.python.org/3/library/index.html">python stanard library</a>。</p>
+
+
+<hr>
+
+</xmp>
+<script src="strapdown.js"></script> 
+
+
+
+<footer>
+  <center><i class="fa fa-envelope"></i> Contact info: <a href="mailto:"> ntumlta2019@gmail.com </a>.</center>
+  <center><i class="fa fa-mortar-board"></i> Course website: <a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses.html", target="_blank">Machine Learning (2019, Spring) @ National Taiwan University</a>.</center>
+  <center><i class="fa fa-cc"></i> Based on <a href="https://getbootstrap.com" target="_blank">Bootstrap</a>. Icons from <a href="https://fontawesome.com" target="_blank">Font-Awesome</a>. Web fonts from <a href="https://fonts.google.com" target="_blank">Google</a>.</center>
+</footer>
+
+</html>
